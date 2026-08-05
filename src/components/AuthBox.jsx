@@ -14,7 +14,7 @@ export default function AuthBox({ mode, onSwitch, onClose }) {
   };
 
   return (
-    <div className="relative w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
+    <div className="relative w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8">
       {onClose && (
         <button
           type="button"

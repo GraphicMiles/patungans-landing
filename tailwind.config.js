@@ -10,9 +10,7 @@ export default {
         ink: '#111827', // text / footer
         mist: '#F6F5FA', // light lavender-gray page background
       },
-      boxShadow: {
-        soft: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      },
+      boxShadow: {},
       fontFamily: {
         sans: [
           'Inter',

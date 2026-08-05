@@ -64,10 +64,10 @@ export default function Hero() {
             {/* Green blob behind the phones */}
             <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-gradient-to-br from-[#9BEBA6] to-primaryDark sm:h-[400px] sm:w-[420px]" />
 
-            <div className="absolute right-0 top-10 h-[420px] w-[200px] rotate-6 rounded-[2.6rem] shadow-2xl sm:h-[520px] sm:w-[250px]">
+            <div className="absolute right-0 top-10 h-[420px] w-[200px] rotate-6 rounded-[2.6rem] sm:h-[520px] sm:w-[250px]">
               <StatsPhone />
             </div>
-            <div className="absolute left-0 top-0 z-10 h-[460px] w-[220px] -rotate-6 rounded-[2.6rem] shadow-2xl sm:h-[550px] sm:w-[270px]">
+            <div className="absolute left-0 top-0 z-10 h-[460px] w-[220px] -rotate-6 rounded-[2.6rem] sm:h-[550px] sm:w-[270px]">
               <MainPhone />
             </div>
           </div>
