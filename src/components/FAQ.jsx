@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Section } from './ui.jsx';
 
 const ITEMS = [
   {
@@ -27,47 +28,46 @@ export default function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="border-y border-line bg-paper-deep">
-      <div className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
-        <div data-reveal className="text-center">
-          <p className="text-tiny font-semibold uppercase tracking-widest text-jade">Questions</p>
-          <h2 className="mt-6 font-display text-display-lg font-bold text-ink">
-            Before you join the line.
-          </h2>
-        </div>
+    <Section tone="paper-deep" narrow>
+      <div data-reveal className="text-center">
+        <p className="text-tiny font-semibold uppercase tracking-widest text-jade">Questions</p>
+        <h2 className="mt-6 font-display text-display-lg font-bold text-ink">
+          Before you join the line.
+        </h2>
+      </div>
 
-        <div className="mt-14 divide-y divide-line border-y border-line">
-          {ITEMS.map((item, index) => {
-            const isOpen = open === index;
-            return (
-              <div key={item.q} data-reveal style={{ '--reveal-delay': `${index * 60}ms` }}>
-                <button
-                  type="button"
-                  onClick={() => setOpen(isOpen ? -1 : index)}
-                  aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-6 py-5 text-left text-body font-semibold text-ink transition-colors hover:text-jade"
-                >
-                  {item.q}
-                  <i
-                    className={`fa-solid fa-plus text-small text-ink/50 transition-transform duration-300 ${
-                      isOpen ? 'rotate-45' : ''
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`grid transition-all duration-300 ease-reveal ${
-                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+      <div className="mt-14 divide-y divide-line border-y border-line">
+        {ITEMS.map((item, index) => {
+          const isOpen = open === index;
+          return (
+            <div key={item.q} data-reveal style={{ '--reveal-delay': `${index * 60}ms` }}>
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? -1 : index)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center justify-between gap-6 py-5 text-left text-body font-semibold text-ink transition-colors hover:text-jade"
+              >
+                {item.q}
+                <i
+                  className={`fa-solid fa-plus text-small text-ink/50 transition-transform duration-300 ${
+                    isOpen ? 'rotate-45' : ''
                   }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="pb-5 text-small text-ink/70">{item.a}</p>
-                  </div>
+                  aria-hidden="true"
+                />
+              </button>
+              <div
+                className={`grid transition-all duration-300 ease-reveal ${
+                  isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="pb-5 text-small text-ink/70">{item.a}</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }

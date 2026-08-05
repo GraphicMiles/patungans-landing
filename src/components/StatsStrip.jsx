@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { Section } from './ui.jsx';
 import { usePrefersReducedMotion, useReversible } from '../hooks/observers.js';
 
 /* Count-up numerals in the mono face (numerals only, per the type system).
@@ -36,6 +37,7 @@ function StatNumber({ value, format }) {
   );
 }
 
+/* Pre-launch demo figures — replace with live metrics when the backend lands. */
 const STATS = [
   {
     value: 4832,
@@ -48,16 +50,16 @@ const STATS = [
     label: 'in pool targets pledged before launch',
   },
   {
-    value: 37,
-    format: (n) => `${Math.round(n)} days`,
-    label: 'until the Lagos launch',
+    value: 14,
+    format: (n) => `${Math.round(n)} cities`,
+    label: 'represented across Nigeria',
   },
 ];
 
 export default function StatsStrip() {
   return (
-    <section className="border-y border-line bg-paper-deep">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 text-center sm:grid-cols-3">
+    <Section tone="paper-deep" tight>
+      <div className="grid gap-10 text-center sm:grid-cols-3">
         {STATS.map((stat, index) => (
           <div key={stat.label} data-reveal style={{ '--reveal-delay': `${index * 80}ms` }}>
             <StatNumber value={stat.value} format={stat.format} />
@@ -65,6 +67,6 @@ export default function StatsStrip() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

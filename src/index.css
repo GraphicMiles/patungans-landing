@@ -108,7 +108,4 @@
     transition: opacity 200ms linear;
     transition-delay: 0ms;
   }
-  .motion-dot {
-    display: none;
-  }
 }

@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-paper/95 backdrop-blur transition-all duration-300 ${
+      className={`sticky top-0 z-50 border-b bg-paper transition-all duration-300 ${
         condensed ? 'border-line' : 'border-transparent'
       }`}
     >

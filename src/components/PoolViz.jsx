@@ -1,7 +1,6 @@
-import { usePrefersReducedMotion } from '../hooks/observers.js';
-
-/* The signature element: contribution nodes animate along paths into a
-   central vessel that fills with scroll progress. Pure SVG/CSS, no images. */
+/* The signature element: contribution nodes connect to a central vessel
+   that fills with scroll progress. Pure SVG/CSS, no images, no continuous
+   motion — the fill is driven entirely by scroll position. */
 
 const CONTRIBUTORS = [
   { name: 'Ada Obi', x: 70, y: 66 },
@@ -30,7 +29,6 @@ function initialsOf(name) {
 }
 
 export default function PoolViz({ percent, target = 1500, compact = false }) {
-  const reduced = usePrefersReducedMotion();
   const clamped = Math.min(100, Math.max(0, percent));
   const fillHeight = (INNER.h * clamped) / 100;
   const fillY = INNER.y + INNER.h - fillHeight;
@@ -57,15 +55,7 @@ export default function PoolViz({ percent, target = 1500, compact = false }) {
           />
         ))}
 
-        {/* Travelling contribution dots (hidden for reduced motion via CSS) */}
-        {!reduced &&
-          CONTRIBUTORS.map((person, i) => (
-            <circle key={person.name} r="5" className="motion-dot fill-coral">
-              <animateMotion dur={`${3 + i * 0.8}s`} repeatCount="indefinite" begin={`${i * 0.6}s`}>
-                <mpath href={`#flow-${i}`} />
-              </animateMotion>
-            </circle>
-          ))}
+        {/* Travelling dots removed — motion is scroll-driven only */}
 
         {/* Vessel */}
         <rect
