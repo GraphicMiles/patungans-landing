@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { usePrefersReducedMotion, useReversible } from '../hooks/observers.js';
 
-/* Count-up numerals in the mono face. Reverses to 0 when scrolled back up
-   past the trigger; renders the final value instantly under reduced motion. */
+/* Count-up numerals in the mono face (numerals only, per the type system).
+   Reverses to 0 when scrolled back up past the trigger; renders the final
+   value instantly under reduced motion. */
 function StatNumber({ value, format }) {
   const [display, setDisplay] = useState(0);
   const reduced = usePrefersReducedMotion();
@@ -10,7 +11,7 @@ function StatNumber({ value, format }) {
   const onEnter = useCallback(() => {
     if (reduced) {
       setDisplay(value);
-      return;
+      return undefined;
     }
     let raf;
     const start = performance.now();
@@ -28,8 +29,6 @@ function StatNumber({ value, format }) {
   const onLeaveUp = useCallback(() => setDisplay(0), []);
   const ref = useReversible(onEnter, onLeaveUp);
 
-  useEffect(() => () => setDisplay(0), []);
-
   return (
     <p ref={ref} className="font-mono text-mono-xl font-semibold text-ink">
       {format(display)}
@@ -38,9 +37,21 @@ function StatNumber({ value, format }) {
 }
 
 const STATS = [
-  { value: 12480, format: (n) => Math.round(n).toLocaleString('en-US'), label: 'pools created by friends' },
-  { value: 4.2, format: (n) => `$${n.toFixed(1)}M`, label: 'pooled toward shared targets' },
-  { value: 26, format: (n) => `${Math.round(n)} days`, label: 'average time to target' },
+  {
+    value: 4832,
+    format: (n) => Math.round(n).toLocaleString('en-US'),
+    label: 'people already on the waitlist',
+  },
+  {
+    value: 214,
+    format: (n) => `₦${Math.round(n)}M`,
+    label: 'in pool targets pledged before launch',
+  },
+  {
+    value: 37,
+    format: (n) => `${Math.round(n)} days`,
+    label: 'until the Lagos launch',
+  },
 ];
 
 export default function StatsStrip() {

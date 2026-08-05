@@ -25,6 +25,9 @@ export default function Footer() {
           <p className="mt-5 max-w-xs text-small leading-relaxed text-paper/60">
             The shared pool for plans you make together.
           </p>
+          <p className="mt-3 text-tiny text-paper/40">
+            Built in Yaba, Lagos · hello@patungans.app · NDPR-compliant
+          </p>
           <div className="mt-6 flex gap-3">
             {SOCIALS.map((social) => (
               <a
@@ -42,7 +45,7 @@ export default function Footer() {
         {/* Link columns */}
         {COLUMNS.map((column) => (
           <div key={column.title}>
-            <h3 className="font-mono text-tiny font-semibold uppercase tracking-widest text-paper/50">
+            <h3 className="text-tiny font-semibold uppercase tracking-widest text-paper/50">
               {column.title}
             </h3>
             <ul className="mt-5 space-y-3">
@@ -58,7 +61,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="mx-auto max-w-6xl border-t border-line-dark px-6 py-6 text-center font-mono text-tiny text-paper/40">
+      <div className="mx-auto max-w-6xl border-t border-line-dark px-6 py-6 text-center text-tiny text-paper/40">
         © 2026 Patungans. All rights reserved.
       </div>
     </footer>

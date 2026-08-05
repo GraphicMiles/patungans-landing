@@ -3,22 +3,22 @@ import { Avatar, Card } from './ui.jsx';
 
 const TESTIMONIALS = [
   {
-    name: 'Ramuel Smith',
-    meta: 'Wedding gift pool · 9 days',
+    name: 'Chidera Okafor',
+    meta: 'Detty December trip · 9 friends · ₦650k',
     quote:
-      'Nine days, fully funded. Everyone could see who had added what, so nobody had to chase anybody — the pool did the awkward part for us.',
+      'Nine of us pooled the Calabar trip without one awkward chat. Everyone watched the fill line move, so nobody had to chase anybody for balance.',
   },
   {
-    name: 'Queenita Warless',
-    meta: 'Household pool · ongoing',
+    name: 'Aminata Bello',
+    meta: 'Wedding gift pool · 6 days',
     quote:
-      'Our flat runs groceries and cleaning through one pool. The fill line ended the “who owes who” conversation completely.',
+      'We funded my best friend’s aso-ebi and gift pool in six days. The ledger showed who added what — no suspicion, no “I sent it already” stories.',
   },
   {
-    name: 'Wizzard Yanto',
-    meta: 'Bali surf trip · 6 contributors',
+    name: 'Tunde Bakare',
+    meta: 'Flat supplies pool · ongoing',
     quote:
-      'I contributed weekly, the others monthly. The target didn’t care, and neither did the app — we hit it eleven days early.',
+      'My flat runs light, water and cleaning through one pool. I add mine on salary week, my roommate adds his whenever — the target doesn’t mind.',
   },
 ];
 
@@ -34,8 +34,12 @@ export default function Testimonials() {
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div data-reveal className="flex items-end justify-between gap-6">
           <div>
-            <p className="font-mono text-tiny font-semibold uppercase tracking-widest text-paper/50">Stories</p>
-            <h2 className="mt-6 font-display text-display-lg font-bold">Pools that already landed.</h2>
+            <p className="text-tiny font-semibold uppercase tracking-widest text-paper/50">
+              Pilot circles
+            </p>
+            <h2 className="mt-6 font-display text-display-lg font-bold">
+              Pools that already landed.
+            </h2>
           </div>
           {/* User-controlled only — no autoplay */}
           <div className="flex shrink-0 gap-3">
@@ -58,11 +62,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div
-          ref={trackRef}
-          data-reveal
-          className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2"
-        >
+        <div ref={trackRef} data-reveal className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
           {TESTIMONIALS.map((entry) => (
             <Card key={entry.name} tone="ink" className="w-72 max-w-[85vw] shrink-0 snap-start">
               <p className="text-body text-paper/80">{entry.quote}</p>
@@ -70,7 +70,7 @@ export default function Testimonials() {
                 <Avatar name={entry.name} className="h-10 w-10 text-tiny" />
                 <div>
                   <p className="text-small font-semibold text-paper">{entry.name}</p>
-                  <p className="mt-0.5 font-mono text-tiny text-coral">{entry.meta}</p>
+                  <p className="mt-0.5 text-tiny font-semibold text-coral">{entry.meta}</p>
                 </div>
               </div>
             </Card>

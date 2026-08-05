@@ -54,8 +54,8 @@ export default function Navbar() {
           <Link to="/login" className="rounded-button px-4 py-2 text-small font-semibold text-ink/70 transition-colors hover:text-ink">
             Log in
           </Link>
-          <Button href="/signup" className="px-5 py-2.5">
-            Start a pool
+          <Button href="#waitlist" className="px-5 py-2.5">
+            Join the waitlist
           </Button>
         </div>
 
@@ -90,8 +90,8 @@ export default function Navbar() {
             <Button href="/login" variant="secondary" onClick={() => setMenuOpen(false)}>
               Log in
             </Button>
-            <Button href="/signup" onClick={() => setMenuOpen(false)}>
-              Start a pool
+            <Button href="#waitlist" onClick={() => setMenuOpen(false)}>
+              Join the waitlist
             </Button>
           </div>
         </div>

@@ -62,7 +62,7 @@ export function Avatar({ name, className = 'h-10 w-10 text-tiny', tone }) {
   return (
     <span
       aria-label={name}
-      className={`${picked} flex shrink-0 items-center justify-center rounded-full font-mono font-semibold ${className}`}
+      className={`${picked} flex shrink-0 items-center justify-center rounded-full font-semibold ${className}`}
     >
       {initialsOf(name)}
     </span>
