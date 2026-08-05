@@ -21,7 +21,7 @@ export default function Footer() {
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
               <i className="fa-solid fa-infinity text-sm text-primary" />
             </span>
-            <span className="text-base font-bold text-white">Patungans</span>
+            <span className="font-display text-base font-bold text-white">Patungans</span>
           </div>
           <p className="mt-5 max-w-xs leading-relaxed">
             A joint venture is an application to collect fees from an agreed plan

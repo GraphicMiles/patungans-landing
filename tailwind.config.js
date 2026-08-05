@@ -25,6 +25,7 @@ export default {
           'Arial',
           'sans-serif',
         ],
+        display: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

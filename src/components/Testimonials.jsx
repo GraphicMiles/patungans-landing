@@ -23,7 +23,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading + arrows */}
         <div className="flex items-center justify-between gap-6">
-          <h2 className="max-w-xs text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="max-w-xs font-display text-3xl font-bold tracking-tight sm:text-4xl">
             What our users who have used it say
           </h2>
           <div className="flex shrink-0 gap-3">
