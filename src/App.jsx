@@ -5,7 +5,7 @@ import AuthPage from './pages/AuthPage.jsx';
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-mist font-sans text-ink">
+      <div className="min-h-screen bg-paper font-sans text-ink">
         <Routes>
           <Route path="/login" element={<AuthPage mode="login" />} />
           <Route path="/signup" element={<AuthPage mode="signup" />} />

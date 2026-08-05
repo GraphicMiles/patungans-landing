@@ -1,78 +1,81 @@
 import { useRef } from 'react';
-import Avatar from './Avatar.jsx';
-import Reveal from './Reveal.jsx';
+import { Avatar, Card } from './ui.jsx';
 
 const TESTIMONIALS = [
-  { name: 'Ramuel Smith' },
-  { name: 'Queenita Warless' },
-  { name: 'Wizzard Yanto' },
-].map((entry) => ({
-  ...entry,
-  quote:
-    'You will target the unanimity with a clear division and target with a very clear set time',
-}));
+  {
+    name: 'Ramuel Smith',
+    meta: 'Wedding gift pool · 9 days',
+    quote:
+      'Nine days, fully funded. Everyone could see who had added what, so nobody had to chase anybody — the pool did the awkward part for us.',
+  },
+  {
+    name: 'Queenita Warless',
+    meta: 'Household pool · ongoing',
+    quote:
+      'Our flat runs groceries and cleaning through one pool. The fill line ended the “who owes who” conversation completely.',
+  },
+  {
+    name: 'Wizzard Yanto',
+    meta: 'Bali surf trip · 6 contributors',
+    quote:
+      'I contributed weekly, the others monthly. The target didn’t care, and neither did the app — we hit it eleven days early.',
+  },
+];
 
 export default function Testimonials() {
   const trackRef = useRef(null);
 
   const scroll = (direction) => {
-    trackRef.current?.scrollBy({ left: direction * 360, behavior: 'smooth' });
+    trackRef.current?.scrollBy({ left: direction * 320, behavior: 'smooth' });
   };
 
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        {/* Heading + arrows */}
-        <Reveal>
-        <div className="flex items-center justify-between gap-6">
-          <h2 className="max-w-xs font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            What our users who have used it say
-          </h2>
+    <section id="stories" className="bg-ink text-paper">
+      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+        <div data-reveal className="flex items-end justify-between gap-6">
+          <div>
+            <p className="font-mono text-tiny font-semibold uppercase tracking-widest text-paper/50">Stories</p>
+            <h2 className="mt-6 font-display text-display-lg font-bold">Pools that already landed.</h2>
+          </div>
+          {/* User-controlled only — no autoplay */}
           <div className="flex shrink-0 gap-3">
             <button
               type="button"
               onClick={() => scroll(-1)}
-              aria-label="Previous testimonials"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:border-ink hover:text-ink"
+              aria-label="Previous stories"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-line-dark text-paper transition-colors hover:border-paper"
             >
-              <i className="fa-solid fa-arrow-left" />
+              <i className="fa-solid fa-arrow-left text-small" />
             </button>
             <button
               type="button"
               onClick={() => scroll(1)}
-              aria-label="Next testimonials"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-ink text-white transition-colors hover:bg-black"
+              aria-label="Next stories"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-line-dark text-paper transition-colors hover:border-paper"
             >
-              <i className="fa-solid fa-arrow-right" />
+              <i className="fa-solid fa-arrow-right text-small" />
             </button>
           </div>
         </div>
-        </Reveal>
 
-        {/* Cards — horizontal scroll track */}
-        <Reveal delay={150}>
-        <div ref={trackRef} className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
+        <div
+          ref={trackRef}
+          data-reveal
+          className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2"
+        >
           {TESTIMONIALS.map((entry) => (
-            <article
-              key={entry.name}
-              className="flex w-[300px] shrink-0 snap-start flex-col rounded-xl bg-gray-100 p-6 sm:w-[340px]"
-            >
-              <div className="flex items-center gap-3">
-                <Avatar name={entry.name} className="h-12 w-12 text-sm" />
+            <Card key={entry.name} tone="ink" className="w-72 max-w-[85vw] shrink-0 snap-start">
+              <p className="text-body text-paper/80">{entry.quote}</p>
+              <div className="mt-8 flex items-center gap-3">
+                <Avatar name={entry.name} className="h-10 w-10 text-tiny" />
                 <div>
-                  <p className="text-sm font-semibold">{entry.name}</p>
-                  <div className="mt-1 flex gap-1 text-[11px] text-amber-400" aria-label="Rated 5 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <i key={i} className="fa-solid fa-star" />
-                    ))}
-                  </div>
+                  <p className="text-small font-semibold text-paper">{entry.name}</p>
+                  <p className="mt-0.5 font-mono text-tiny text-coral">{entry.meta}</p>
                 </div>
               </div>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-gray-500">{entry.quote}</p>
-            </article>
+            </Card>
           ))}
         </div>
-        </Reveal>
       </div>
     </section>
   );

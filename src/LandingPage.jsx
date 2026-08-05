@@ -1,25 +1,28 @@
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
-import StatsFeatures from './components/StatsFeatures.jsx';
-import DarkFeature from './components/DarkFeature.jsx';
-import TwoColumnFeatures from './components/TwoColumnFeatures.jsx';
-import SocialProof from './components/SocialProof.jsx';
+import StatsStrip from './components/StatsStrip.jsx';
+import HowItWorks from './components/HowItWorks.jsx';
+import TrustPair from './components/TrustPair.jsx';
+import Recap from './components/Recap.jsx';
 import Testimonials from './components/Testimonials.jsx';
-import CTABanner from './components/CTABanner.jsx';
+import FinalCTA from './components/FinalCTA.jsx';
 import Footer from './components/Footer.jsx';
+import { useRevealSystem } from './hooks/observers.js';
 
 export default function LandingPage() {
+  useRevealSystem();
+
   return (
     <>
       <Navbar />
       <main>
         <Hero />
-        <StatsFeatures />
-        <DarkFeature />
-        <TwoColumnFeatures />
-        <SocialProof />
+        <StatsStrip />
+        <HowItWorks />
+        <TrustPair />
+        <Recap />
         <Testimonials />
-        <CTABanner />
+        <FinalCTA />
       </main>
       <Footer />
     </>
