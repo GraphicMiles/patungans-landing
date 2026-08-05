@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import Avatar from './Avatar.jsx';
+import Reveal from './Reveal.jsx';
 
 const TESTIMONIALS = [
   { name: 'Ramuel Smith' },
@@ -22,6 +23,7 @@ export default function Testimonials() {
     <section className="bg-white py-24">
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading + arrows */}
+        <Reveal>
         <div className="flex items-center justify-between gap-6">
           <h2 className="max-w-xs font-display text-3xl font-bold tracking-tight sm:text-4xl">
             What our users who have used it say
@@ -45,8 +47,10 @@ export default function Testimonials() {
             </button>
           </div>
         </div>
+        </Reveal>
 
         {/* Cards — horizontal scroll track */}
+        <Reveal delay={150}>
         <div ref={trackRef} className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
           {TESTIMONIALS.map((entry) => (
             <article
@@ -68,6 +72,7 @@ export default function Testimonials() {
             </article>
           ))}
         </div>
+        </Reveal>
       </div>
     </section>
   );

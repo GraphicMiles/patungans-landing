@@ -1,22 +1,23 @@
 import Avatar from './Avatar.jsx';
+import Reveal from './Reveal.jsx';
 import { MainPhone, StatsPhone } from './PhoneMockups.jsx';
 
 export default function Hero() {
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 pb-20 pt-12 lg:grid-cols-2 lg:gap-10">
-        {/* Left — copy */}
-        <div className="flex flex-col items-start">
-          <h1 className="max-w-xl font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Plan joint ventures for desired targets
+      <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 pb-24 pt-16 lg:grid-cols-2 lg:gap-10">
+        {/* Left — copy (centered on mobile) */}
+        <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <h1 className="max-w-2xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+            Plan joint ventures for <span className="text-primaryDark">desired targets</span>
           </h1>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-gray-500">
+          <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-gray-500 lg:mx-0">
             when an unknown printer took a galley of type and script to make a type specimen book.
           </p>
 
           <button type="button" className="group mt-8 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primaryDark text-white transition-transform group-hover:scale-105">
-              <i className="fa-solid fa-play text-xs" />
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primaryDark text-white transition-transform group-hover:scale-105">
+              <i className="fa-solid fa-play text-sm" />
             </span>
             <span className="text-sm font-semibold">Introducing about us</span>
           </button>
@@ -26,7 +27,7 @@ export default function Hero() {
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-white px-4 py-1.5 text-xs text-gray-500">
               Available for download :
             </span>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <a href="#" className="flex items-center gap-3 rounded-lg bg-ink px-4 py-2 text-white transition-colors hover:bg-black">
                 <i className="fa-brands fa-apple text-xl" />
                 <span className="text-left leading-tight">
@@ -43,10 +44,10 @@ export default function Hero() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Right — happy users + phones */}
-        <div>
+        <Reveal delay={150}>
           <div className="mb-8 flex items-center justify-center gap-3 lg:justify-end">
             <div className="flex -space-x-2.5">
               <Avatar name="Ada Obi" className="h-9 w-9 text-[10px]" ring="ring-2 ring-mist" />
@@ -54,7 +55,7 @@ export default function Hero() {
               <Avatar name="Tola Bello" className="h-9 w-9 text-[10px]" ring="ring-2 ring-mist" />
             </div>
             <div className="text-left">
-              <p className="text-lg font-bold leading-none">1.5M +</p>
+              <p className="font-display text-lg font-bold leading-none">1.5M +</p>
               <p className="mt-1 text-xs text-gray-500">Happy Users</p>
             </div>
           </div>
@@ -70,7 +71,7 @@ export default function Hero() {
               <MainPhone />
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
