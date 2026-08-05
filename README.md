@@ -1,72 +1,81 @@
-# Patungans — Demo Landing Page 1
+# Patungans — Landing Page
 
-A responsive recreation of the Patungans landing page built with **React +
-Vite + Tailwind CSS + React Router**, using **Font Awesome 6** (CDN) for all
-icons. Typography: **Inter** (body) + **Space Grotesk** (display).
+Enterprise-grade marketing page for **Patungans**, the joint-venture / group-money
+app: friends pool contributions toward a shared target (a trip, a gift, a
+subscription, an event) and track the pool's progress together.
 
-## Features
+Built with **React + Vite + Tailwind CSS + React Router**. No image assets —
+every future image slot uses the labeled `ImagePlaceholder` component, and the
+signature visual (the pool) is pure SVG/CSS.
 
-- Sticky navbar with **hamburger menu** on mobile
-- **`/login` and `/signup` routes** — the auth box (tabs, forms, social
-  buttons) rendered as a page, perfectly centered on screen
-- Phone & device mockups built as real UI in JSX (balance card, chart, activity list)
-- Initials-based avatars (`Avatar` component) standing in for user photos
-- Scrollable testimonials with working arrow controls
-- Green CTA banner overlapping the dark footer, like the reference design
-- **Scroll-reveal animations** (`Reveal` component, IntersectionObserver)
-- Mobile-first centering: copy blocks center on small screens, left-align on desktop
+## Design system (tokens live only in `src/index.css`)
+
+| Token     | Hex       | Job                                        |
+| --------- | --------- | ------------------------------------------ |
+| ink       | `#101B16` | deep pine dark backgrounds                 |
+| paper     | `#F6F3EC` | warm bone light backgrounds                |
+| jade      | `#1F7A5C` | growth / money — primary actions           |
+| coral     | `#E8694A` | social warmth — friends & social proof     |
+| gold      | `#C9A15A` | milestones / target reached only           |
+| line      | `#DAD4C4` | hairlines on paper                         |
+
+- **Display**: Fraunces (headlines only) · **Body**: Inter · **Numerals**: JetBrains Mono (money, %, stats only)
+- Full type scale as `--font-size-*` / `--line-height-*` custom properties; no inline sizing.
+- Zero shadows, zero raw hex/px outside the token file, no emoji.
+
+## Signature element
+
+`PoolViz` — contribution nodes (initials avatars) animate along SVG paths into a
+central vessel whose fill **scrubs with scroll progress** through its section.
+A miniature `NavVessel` in the sticky nav fills with page scroll progress next
+to a slim jade progress bar.
+
+## Motion
+
+- One shared `IntersectionObserver` (`src/hooks/observers.js`), applied via
+  `data-reveal` across all sections; reveals **reverse** when scrolling back up
+  past the trigger (elements that left through the top stay revealed).
+- Child stagger via `--reveal-delay` inline custom property.
+- Stats count up on entry and reset on reverse; instant under
+  `prefers-reduced-motion`, which also disables transforms and the traveling
+  contribution dots.
+- Testimonial carousel is user-controlled only (arrows / swipe, no autoplay).
 
 ## Routes
 
-| Path     | Page                            |
-| -------- | ------------------------------- |
-| `/`      | Landing page                    |
-| `/login` | Centered login box              |
-| `/signup`| Centered signup box             |
-
-## Getting started
-
-```bash
-npm install
-npm run dev      # start the dev server (http://localhost:5173)
-npm run build    # production build
-npm run preview  # preview the production build
-```
+| Path      | Page                        |
+| --------- | --------------------------- |
+| `/`       | Landing page                |
+| `/login`  | Centered login box (UI-only)|
+| `/signup` | Centered signup box (UI-only)|
 
 ## Structure
 
 ```
 src/
-├── App.jsx                  # router (/ , /login, /signup)
-├── LandingPage.jsx          # composes the landing sections
-├── main.jsx                 # React entry point
-├── index.css                # Tailwind entry
-├── pages/
-│   └── AuthPage.jsx         # centered auth page for /login & /signup
+├── App.jsx               # router
+├── LandingPage.jsx       # section composition + reveal system
+├── index.css             # TOKEN FILE (only raw hex lives here) + reveal CSS
+├── hooks/observers.js    # one IO config, scroll/page progress, reduced motion
+├── pages/AuthPage.jsx    # /login & /signup centered box
 └── components/
-    ├── AuthBox.jsx          # login / signup box (tabs + forms)
-    ├── Avatar.jsx           # initials avatar (stands in for photos)
-    ├── Reveal.jsx           # scroll-reveal animation wrapper
-    ├── Navbar.jsx           # sticky header + hamburger
-    ├── PhoneMockups.jsx     # MainPhone / StatsPhone / DeviceCard UI mockups
-    ├── Hero.jsx             # headline + phone mockups + store badges
-    ├── StatsFeatures.jsx    # stats + clear targets / promising progress
-    ├── DarkFeature.jsx      # "Monitor easily" dark panel
-    ├── TwoColumnFeatures.jsx# security + integrations cards
-    ├── SocialProof.jsx      # network diagram section
-    ├── Testimonials.jsx     # scrollable testimonial cards
-    ├── CTABanner.jsx        # green gradient download banner
-    └── Footer.jsx           # dark footer with link columns
+    ├── ui.jsx            # Button variants, Card, ImagePlaceholder, Avatar
+    ├── PoolViz.jsx       # signature visualization + NavVessel
+    ├── Navbar.jsx        # condensing sticky nav + progress bar + hamburger
+    ├── Hero.jsx          # paper — headline + scrubbed pool viz
+    ├── StatsStrip.jsx    # mono count-up stats band
+    ├── HowItWorks.jsx    # ink — 3 numbered steps + screenshot slot
+    ├── TrustPair.jsx     # paper — security / integrations cards
+    ├── Recap.jsx         # paper-deep — mini pool viz + "why pooling works"
+    ├── Testimonials.jsx  # ink — user-controlled carousel
+    ├── FinalCTA.jsx      # jade band — single typographic ask
+    ├── Footer.jsx        # ink — About/Company/Legal + socials
+    └── AuthBox.jsx       # login/signup box
 ```
 
-## Design tokens (tailwind.config.js)
+## Run
 
-- Primary `#4ADE80`, Primary dark `#22C55E`
-- Secondary `#1F2937`, Ink `#111827`, Mist `#F6F5FA`
-- `font-sans` Inter, `font-display` Space Grotesk
-- Shadows only where the design needs depth (phones, auth box)
-
-## Notes
-
-- Icons: Font Awesome 6 classes loaded from CDN in `index.html`.
-- Avatars: swap `Avatar` for real `<img />` tags when photos are available.
+```bash
+npm install
+npm run dev
+```

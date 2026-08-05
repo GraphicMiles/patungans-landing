@@ -2,12 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   DESIGN TOKENS — the single file allowed to contain raw hex values.
+   Everything else references these via Tailwind mappings or var().
+   *-rgb triplets exist so Tailwind opacity modifiers (ink/60) work.
+--------------------------------------------------------------------------- */
+:root {
+  /* Palette */
+  --color-ink: #101b16; /* deep pine — primary dark background */
+  --color-ink-rgb: 16 27 22;
+  --color-ink-raise: #1b2a23; /* raised surfaces on ink */
+  --color-ink-raise-rgb: 27 42 35;
+  --color-paper: #f6f3ec; /* warm bone — primary light background */
+  --color-paper-rgb: 246 243 236;
+  --color-paper-deep: #efeade; /* deeper bone for alternating bands */
+  --color-paper-deep-rgb: 239 234 222;
+  --color-jade: #1f7a5c; /* growth / money — primary actions */
+  --color-jade-rgb: 31 122 92;
+  --color-jade-deep: #175e47; /* hover / pressed jade */
+  --color-jade-deep-rgb: 23 94 71;
+  --color-coral: #e8694a; /* social warmth — friends & social proof only */
+  --color-coral-rgb: 232 105 74;
+  --color-gold: #c9a15a; /* milestones / target reached only */
+  --color-gold-rgb: 201 161 90;
+  --color-line: #dad4c4; /* hairlines on paper */
+  --color-line-rgb: 218 212 196;
+  --color-line-dark: #2a3b32; /* hairlines on ink */
+  --color-line-dark-rgb: 42 59 50;
+
+  /* Type scale */
+  --font-size-display-xl: clamp(2.8rem, 7vw, 4.75rem);
+  --line-height-display-xl: 1.02;
+  --font-size-display-lg: clamp(2rem, 4.5vw, 3.25rem);
+  --line-height-display-lg: 1.08;
+  --font-size-display-md: clamp(1.4rem, 3vw, 2rem);
+  --line-height-display-md: 1.2;
+  --font-size-body-lg: 1.125rem;
+  --line-height-body-lg: 1.65;
+  --font-size-body: 1rem;
+  --line-height-body: 1.6;
+  --font-size-small: 0.875rem;
+  --line-height-small: 1.5;
+  --font-size-tiny: 0.75rem;
+  --line-height-tiny: 1.45;
+  --font-size-mono-xl: clamp(2rem, 5vw, 3.5rem);
+  --line-height-mono-xl: 1;
+  --font-size-mono-lg: clamp(1.5rem, 3.5vw, 2.25rem);
+  --line-height-mono-lg: 1.1;
+  --font-size-mono: 0.9375rem;
+  --line-height-mono: 1.4;
+
+  /* Motion */
+  --ease-reveal: cubic-bezier(0.22, 0.61, 0.21, 1);
+  --duration-reveal: 560ms;
+  --reveal-offset: 16px;
+
+  /* Radii */
+  --radius-card: 1rem;
+  --radius-button: 0.625rem;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
   }
   body {
-    @apply bg-mist text-ink antialiased;
-    overflow-x: clip; /* never allow horizontal page scroll */
+    @apply bg-paper font-sans text-ink antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-jade);
+    color: var(--color-paper);
+  }
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal system (see src/hooks/observers.js)
+   State is derived from scroll position and REVERSES when scrolling back up.
+--------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-offset));
+  transition:
+    opacity var(--duration-reveal) var(--ease-reveal),
+    transform var(--duration-reveal) var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    transform: none;
+    transition: opacity 200ms linear;
+    transition-delay: 0ms;
+  }
+  .motion-dot {
+    display: none;
   }
 }

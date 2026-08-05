@@ -12,19 +12,18 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    // Extra top padding: the CTA banner overlaps into this dark band.
-    <footer className="bg-ink pb-8 pt-44 text-sm text-gray-400">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+    <footer id="about" className="bg-ink text-paper">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
-              <i className="fa-solid fa-infinity text-sm text-primary" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-button border border-line-dark">
+              <i className="fa-solid fa-infinity text-small text-jade" />
             </span>
-            <span className="font-display text-base font-bold text-white">Patungans</span>
+            <span className="font-display text-body-lg font-bold">Patungans</span>
           </div>
-          <p className="mt-5 max-w-xs leading-relaxed">
-            A joint venture is an application to collect fees from an agreed plan
+          <p className="mt-5 max-w-xs text-small leading-relaxed text-paper/60">
+            The shared pool for plans you make together.
           </p>
           <div className="mt-6 flex gap-3">
             {SOCIALS.map((social) => (
@@ -32,9 +31,9 @@ export default function Footer() {
                 key={social.icon}
                 href="#"
                 aria-label={social.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-300 ring-1 ring-white/10 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-line-dark text-paper/70 transition-colors hover:border-paper hover:text-paper"
               >
-                <i className={`fa-brands ${social.icon} text-xs`} />
+                <i className={`fa-brands ${social.icon} text-tiny`} />
               </a>
             ))}
           </div>
@@ -43,11 +42,13 @@ export default function Footer() {
         {/* Link columns */}
         {COLUMNS.map((column) => (
           <div key={column.title}>
-            <h3 className="text-sm font-semibold text-white">{column.title}</h3>
+            <h3 className="font-mono text-tiny font-semibold uppercase tracking-widest text-paper/50">
+              {column.title}
+            </h3>
             <ul className="mt-5 space-y-3">
               {column.links.map((link) => (
                 <li key={link}>
-                  <a href="#" className="transition-colors hover:text-white">
+                  <a href="#" className="text-small text-paper/70 transition-colors hover:text-paper">
                     {link}
                   </a>
                 </li>
@@ -57,8 +58,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="mx-auto mt-14 max-w-6xl border-t border-white/10 px-6 pt-6 text-center text-xs text-gray-500">
-        © Copyright 2022 Patungans. All rights reserved.
+      <div className="mx-auto max-w-6xl border-t border-line-dark px-6 py-6 text-center font-mono text-tiny text-paper/40">
+        © 2026 Patungans. All rights reserved.
       </div>
     </footer>
   );
