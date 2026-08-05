@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Avatar, Button } from './ui.jsx';
 
 /* UI-only waitlist capture — deterministic ticket so the flow feels real
@@ -16,7 +16,8 @@ function hashOf(value) {
   return hash;
 }
 
-export default function WaitlistForm({ tone = 'light' }) {
+export default function WaitlistForm({ tone = 'light', anchor = false }) {
+  const inputId = useId();
   const [email, setEmail] = useState('');
   const [ticket, setTicket] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -71,13 +72,13 @@ export default function WaitlistForm({ tone = 'light' }) {
   }
 
   return (
-    <form id="waitlist" onSubmit={submit} className="mt-10 w-full max-w-md">
+    <form id={anchor ? 'waitlist' : undefined} onSubmit={submit} className="mt-10 w-full max-w-md">
       <div className="flex flex-col gap-3 sm:flex-row">
-        <label className="sr-only" htmlFor="waitlist-email">
+        <label className="sr-only" htmlFor={inputId}>
           Email address
         </label>
         <input
-          id="waitlist-email"
+          id={inputId}
           type="email"
           required
           value={email}

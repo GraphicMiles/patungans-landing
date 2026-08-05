@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import WaitlistForm from './WaitlistForm.jsx';
+import { Section } from './ui.jsx';
 
 const LAUNCH = new Date('2026-10-01T09:00:00+01:00').getTime();
 
@@ -20,7 +21,7 @@ function Countdown() {
   ];
 
   return (
-    <div className="flex justify-center gap-8" role="timer" aria-label="Time until launch">
+    <div className="flex justify-center gap-8" role="timer" aria-label="Time until the Lagos launch">
       {units.map((unit) => (
         <div key={unit.label}>
           <p className="font-mono text-mono-lg font-semibold text-paper">
@@ -35,12 +36,10 @@ function Countdown() {
 
 export default function FinalCTA() {
   return (
-    <section id="cta" className="bg-jade text-paper">
-      <div data-reveal className="mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+    <Section id="cta" tone="jade" narrow className="text-center">
+      <div data-reveal>
         <Countdown />
-        <h2 className="mt-10 font-display text-display-lg font-bold">
-          Be first in the pool.
-        </h2>
+        <h2 className="mt-10 font-display text-display-lg font-bold">Be first in the pool.</h2>
         <p className="mx-auto mt-6 max-w-md text-body text-paper/80">
           The Lagos cohort opens 1 October 2026, then Abuja and Port Harcourt. Waitlist members
           get in first — in order, and ahead of schedule for every friend they bring.
@@ -48,8 +47,10 @@ export default function FinalCTA() {
         <div className="mx-auto flex max-w-md justify-center">
           <WaitlistForm tone="jade" />
         </div>
-        <p className="mt-8 text-tiny text-paper/70">Free to join · No card required · Leave anytime</p>
+        <p className="mt-8 text-tiny text-paper/70">
+          Free to join · No card required · Leave anytime
+        </p>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -32,6 +32,27 @@ export function Card({ tone = 'paper', className = '', children }) {
   return <div className={`rounded-card p-8 ${tones[tone]} ${className}`}>{children}</div>;
 }
 
+/** One layout primitive for every band — consistent container, rhythm, tone. */
+export function Section({ id, tone = 'paper', narrow = false, tight = false, className = '', children }) {
+  const tones = {
+    paper: 'bg-paper',
+    'paper-deep': 'bg-paper-deep border-y border-line',
+    ink: 'bg-ink text-paper',
+    jade: 'bg-jade text-paper',
+  };
+  return (
+    <section id={id} className={`${tones[tone]} ${className}`}>
+      <div
+        className={`mx-auto px-6 ${tight ? 'py-16 sm:py-20' : 'py-24 sm:py-32'} ${
+          narrow ? 'max-w-3xl' : 'max-w-6xl'
+        }`}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
 /**
  * §6 convention — every future image slot. Labeled, bordered, no network,
  * no unlabeled gray boxes. States exact dimensions + content brief.
