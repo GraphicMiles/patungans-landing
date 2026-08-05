@@ -3,11 +3,11 @@ import { Card } from './ui.jsx';
 const CARDS = [
   {
     title: 'Security and compliance',
-    body: 'Every contribution sits in a regulated partner account under a per-pool ledger, and each transfer is encrypted in transit and at rest — the balance in a pool belongs to its members alone.',
+    body: 'Contributions sit in CBN-licensed partner accounts under a per-pool ledger, we are NDPR-compliant, and every transfer is encrypted in transit and at rest — the balance belongs to the members alone.',
   },
   {
     title: 'Integrations',
-    body: 'Patungans connects to the wallets you already use — bank transfer, debit card, and e-wallets — so adding to a pool takes one tap, not a new account.',
+    body: 'Pay in from any Nigerian bank, card, or e-wallet on Paystack and Flutterwave rails — plus USSD for feature phones — so contributing takes one tap, not a new account.',
   },
 ];
 
@@ -16,7 +16,7 @@ export default function TrustPair() {
     <section id="trust" className="bg-paper">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div data-reveal>
-          <p className="font-mono text-tiny font-semibold uppercase tracking-widest text-jade">Trust and mechanics</p>
+          <p className="text-tiny font-semibold uppercase tracking-widest text-jade">Trust and mechanics</p>
           <h2 className="mt-6 max-w-xl font-display text-display-lg font-bold text-ink">
             Built so money between friends stays friendly.
           </h2>

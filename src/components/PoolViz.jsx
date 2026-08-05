@@ -127,7 +127,7 @@ export default function PoolViz({ percent, target = 1500, compact = false }) {
         <figcaption className="mt-4 flex items-baseline justify-center gap-4">
           <span className="font-mono text-mono-lg font-semibold text-jade">{Math.round(clamped)}%</span>
           <span className="font-mono text-mono text-ink/60">
-            ${amount.toLocaleString('en-US')} of ${target.toLocaleString('en-US')}
+            ₦{amount.toLocaleString('en-US')} of ₦{target.toLocaleString('en-US')}
           </span>
         </figcaption>
       )}

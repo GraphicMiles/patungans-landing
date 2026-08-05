@@ -3,7 +3,7 @@ import { ImagePlaceholder } from './ui.jsx';
 const STEPS = [
   {
     title: 'Create a pool, set the target',
-    body: 'Name the plan and set the amount and the date — a weekend trip, a group gift, a shared subscription.',
+    body: 'Name the plan and set the amount and the date — a Detty December trip, a group gift, shared rent.',
   },
   {
     title: 'Invite friends, each sets their pace',
@@ -20,7 +20,7 @@ export default function HowItWorks() {
     <section id="how" className="bg-ink text-paper">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div data-reveal>
-          <p className="font-mono text-tiny font-semibold uppercase tracking-widest text-paper/50">How it works</p>
+          <p className="text-tiny font-semibold uppercase tracking-widest text-paper/50">How it works</p>
           <h2 className="mt-6 max-w-xl font-display text-display-lg font-bold">
             Three steps from “we should” to “we did”.
           </h2>
