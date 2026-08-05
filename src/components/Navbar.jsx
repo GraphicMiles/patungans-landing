@@ -20,7 +20,7 @@ export default function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink">
             <i className="fa-solid fa-infinity text-sm text-primary" />
           </span>
-          <span className="text-base font-bold tracking-tight">Patungans</span>
+          <span className="font-display text-base font-bold tracking-tight">Patungans</span>
         </a>
 
         {/* Center links */}

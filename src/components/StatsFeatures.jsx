@@ -16,16 +16,16 @@ export default function StatsFeatures() {
     <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-4 lg:grid-cols-2 lg:gap-20">
       {/* Left — heading + stats */}
       <div>
-        <h2 className="max-w-md text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="max-w-md font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Payment plans made easier together
         </h2>
         <div className="mt-10 flex gap-14">
           <div>
-            <p className="text-3xl font-bold text-primaryDark">2.3M +</p>
+            <p className="font-display text-3xl font-bold text-primaryDark">2.3M +</p>
             <p className="mt-1 text-sm text-gray-500">Downloaded</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primaryDark">4.9</p>
+            <p className="font-display text-3xl font-bold text-primaryDark">4.9</p>
             <p className="mt-1 text-sm text-gray-500">Ratings</p>
           </div>
         </div>

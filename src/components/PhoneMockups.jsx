@@ -192,7 +192,7 @@ export function DeviceCard() {
       </div>
 
       {/* Floating avatar rail */}
-      <div className="absolute -right-5 top-6 flex flex-col items-center gap-1.5 rounded-xl bg-ink p-2">
+      <div className="absolute -right-4 top-6 flex flex-col items-center gap-1.5 rounded-xl bg-ink p-2">
         <Avatar name="Ada Obi" className="h-6 w-6 text-[7px]" />
         <Avatar name="Kunle Ade" className="h-6 w-6 text-[7px]" />
         <Avatar name="Tola Bello" className="h-6 w-6 text-[7px]" />
@@ -200,7 +200,7 @@ export function DeviceCard() {
       </div>
 
       {/* Floating savings chip */}
-      <div className="absolute -left-6 bottom-8 flex items-center gap-2 rounded-lg bg-white px-3 py-2">
+      <div className="absolute -left-4 bottom-8 flex items-center gap-2 rounded-lg bg-white px-3 py-2">
         <i className="fa-solid fa-circle-check text-sm text-primaryDark" />
         <div>
           <p className="text-[9px] font-bold text-ink">$120 saved</p>

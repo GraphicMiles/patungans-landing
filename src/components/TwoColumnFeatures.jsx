@@ -19,7 +19,7 @@ export default function TwoColumnFeatures() {
           <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-primary">
             <i className={`fa-solid ${card.icon} text-lg`} />
           </span>
-          <h3 className="mt-6 text-xl font-semibold">{card.title}</h3>
+          <h3 className="mt-6 font-display text-xl font-semibold">{card.title}</h3>
           <p className="mt-2 text-sm text-gray-500">{card.body}</p>
           <a
             href="#"

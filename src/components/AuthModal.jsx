@@ -40,7 +40,7 @@ export default function AuthModal({ open, tab, onClose, onTabChange }) {
           <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink">
             <i className="fa-solid fa-infinity text-lg text-primary" />
           </span>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight">
+          <h2 className="mt-4 font-display text-2xl font-bold tracking-tight">
             {isLogin ? 'Welcome back' : 'Create your account'}
           </h2>
           <p className="mt-1 text-sm text-gray-500">

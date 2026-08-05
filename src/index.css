@@ -8,5 +8,6 @@
   }
   body {
     @apply bg-mist text-ink antialiased;
+    overflow-x: clip; /* never allow horizontal page scroll */
   }
 }

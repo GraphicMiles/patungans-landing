@@ -20,7 +20,7 @@ export default function CTABanner() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left — copy */}
           <div>
-            <h2 className="max-w-sm text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="max-w-sm font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Plan your budget now with your friends together
             </h2>
             <a

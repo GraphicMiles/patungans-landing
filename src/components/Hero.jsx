@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 pb-20 pt-12 lg:grid-cols-2 lg:gap-10">
         {/* Left — copy */}
         <div className="flex flex-col items-start">
-          <h1 className="max-w-xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="max-w-xl font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
             Plan joint ventures for desired targets
           </h1>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-gray-500">
@@ -59,7 +59,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto h-[500px] w-[290px] sm:h-[580px] sm:w-[420px]">
+          <div className="relative mx-auto h-[500px] w-full max-w-[290px] sm:h-[580px] sm:max-w-[420px]">
             {/* Green blob behind the phones */}
             <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-gradient-to-br from-[#9BEBA6] to-primaryDark sm:h-[400px] sm:w-[420px]" />
 
