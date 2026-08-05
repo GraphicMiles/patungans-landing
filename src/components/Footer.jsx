@@ -1,12 +1,14 @@
-import Placeholder from './Placeholder.jsx';
-
 const COLUMNS = [
   { title: 'About', links: ['About us', 'Features', 'Blog', 'Download'] },
   { title: 'Company', links: ['How we work', 'Press Room', 'Jobs', 'Community'] },
   { title: 'Legal', links: ['Terms of use', 'Privacy Policy', 'Security Policy', 'Cookie Settings'] },
 ];
 
-const SOCIALS = ['fb', 'tw', 'ig'];
+const SOCIALS = [
+  { icon: 'fa-facebook-f', label: 'Facebook' },
+  { icon: 'fa-twitter', label: 'Twitter' },
+  { icon: 'fa-instagram', label: 'Instagram' },
+];
 
 export default function Footer() {
   return (
@@ -16,27 +18,34 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2.5">
-            <Placeholder label="logo" dark className="h-8 w-8 rounded-lg" />
-            <span className="text-base font-semibold text-white">Patungans</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
+              <i className="fa-solid fa-infinity text-sm text-primary" />
+            </span>
+            <span className="text-base font-bold text-white">Patungans</span>
           </div>
           <p className="mt-5 max-w-xs leading-relaxed">
             A joint venture is an application to collect fees from an agreed plan
           </p>
           <div className="mt-6 flex gap-3">
             {SOCIALS.map((social) => (
-              <a key={social} href="#" aria-label={`Patungans on ${social}`}>
-                <Placeholder label={social} dark className="h-9 w-9 rounded-full" />
+              <a
+                key={social.icon}
+                href="#"
+                aria-label={social.label}
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-300 ring-1 ring-white/10 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <i className={`fa-brands ${social.icon} text-xs`} />
               </a>
             ))}
           </div>
         </div>
 
         {/* Link columns */}
-        {COLUMNS.map((col) => (
-          <div key={col.title}>
-            <h3 className="text-sm font-semibold text-white">{col.title}</h3>
+        {COLUMNS.map((column) => (
+          <div key={column.title}>
+            <h3 className="text-sm font-semibold text-white">{column.title}</h3>
             <ul className="mt-5 space-y-3">
-              {col.links.map((link) => (
+              {column.links.map((link) => (
                 <li key={link}>
                   <a href="#" className="transition-colors hover:text-white">
                     {link}

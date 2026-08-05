@@ -1,17 +1,17 @@
-import Placeholder from './Placeholder.jsx';
+import { DeviceCard } from './PhoneMockups.jsx';
 
 export default function DarkFeature() {
   return (
     <section className="px-6">
-      <div className="relative mx-auto max-w-6xl rounded-3xl bg-secondary px-8 py-14 shadow-soft sm:px-12">
+      <div className="relative mx-auto max-w-6xl rounded-3xl bg-secondary px-8 py-14 sm:px-12">
         {/* Pill overlapping the top edge */}
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-white px-6 py-2 text-sm font-semibold text-primaryDark shadow-soft">
+        <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-white px-6 py-2 text-sm font-semibold text-primaryDark">
           Monitor easily
         </span>
 
-        <div className="grid items-center gap-12 lg:grid-cols-5">
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-12">
           {/* Left — copy */}
-          <div className="lg:col-span-3">
+          <div>
             <h2 className="max-w-md text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Connecting your beliefs with discourse with friends
             </h2>
@@ -24,15 +24,9 @@ export default function DarkFeature() {
             </a>
           </div>
 
-          {/* Right — device mockup + floating UI chips */}
-          <div className="relative mx-auto lg:col-span-2">
-            <Placeholder label="Tablet mockup" className="h-[400px] w-[300px] rounded-2xl shadow-2xl" />
-            <div className="absolute -left-6 top-10 rounded-lg bg-white px-3 py-2 text-[10px] font-medium text-gray-500 shadow-lg">
-              Floating UI
-            </div>
-            <div className="absolute -right-4 bottom-12 rounded-lg bg-white px-3 py-2 text-[10px] font-medium text-gray-500 shadow-lg">
-              Floating UI
-            </div>
+          {/* Right — device mockup */}
+          <div className="px-6 sm:px-10">
+            <DeviceCard />
           </div>
         </div>
       </div>

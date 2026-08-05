@@ -1,13 +1,11 @@
-import Placeholder from './Placeholder.jsx';
-
 const FEATURES = [
   {
-    icon: 'target icon',
+    icon: 'fa-bullseye',
     title: 'Clear targets',
     body: 'You will target the unanimity with a clear division and target with a very clear set time',
   },
   {
-    icon: 'chart icon',
+    icon: 'fa-chart-line',
     title: 'Promising progress',
     body: 'You can monitor the progress of your gathering along with your friends who are planning it',
   },
@@ -15,7 +13,7 @@ const FEATURES = [
 
 export default function StatsFeatures() {
   return (
-    <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-4 lg:grid-cols-2 lg:gap-20">
+    <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-4 lg:grid-cols-2 lg:gap-20">
       {/* Left — heading + stats */}
       <div>
         <h2 className="max-w-md text-3xl font-bold tracking-tight sm:text-4xl">
@@ -36,9 +34,11 @@ export default function StatsFeatures() {
       {/* Right — feature list */}
       <div className="divide-y divide-gray-200">
         {FEATURES.map((feature) => (
-          <div key={feature.title} className="py-7 first:pt-0 last:pb-0">
+          <div key={feature.title} className="py-8 first:pt-0 last:pb-0">
             <div className="flex items-center gap-4">
-              <Placeholder label={feature.icon} dark className="h-11 w-11 rounded-xl" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-primary">
+                <i className={`fa-solid ${feature.icon}`} />
+              </span>
               <h3 className="font-semibold">{feature.title}</h3>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-gray-500">{feature.body}</p>

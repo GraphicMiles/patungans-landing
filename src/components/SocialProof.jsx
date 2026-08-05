@@ -1,12 +1,12 @@
-import Placeholder from './Placeholder.jsx';
+import Avatar from './Avatar.jsx';
 
 // Avatar anchor points on the 320×320 diagram (center = 160,160)
 const AVATARS = [
-  { x: 62, y: 58 },
-  { x: 252, y: 74 },
-  { x: 272, y: 192 },
-  { x: 152, y: 278 },
-  { x: 48, y: 206 },
+  { name: 'Ada Obi', x: 62, y: 58 },
+  { name: 'Kunle Ade', x: 252, y: 74 },
+  { name: 'Tola Bello', x: 272, y: 192 },
+  { name: 'Bola Ade', x: 152, y: 278 },
+  { name: 'Zainab Musa', x: 48, y: 206 },
 ];
 
 export default function SocialProof() {
@@ -23,27 +23,25 @@ export default function SocialProof() {
           strokeWidth="1.5"
           aria-hidden="true"
         >
-          {AVATARS.map((point, i) => (
-            <line key={i} x1="160" y1="160" x2={point.x} y2={point.y} />
+          {AVATARS.map((point) => (
+            <line key={point.name} x1="160" y1="160" x2={point.x} y2={point.y} />
           ))}
         </svg>
 
         {/* Center logo */}
-        <Placeholder
-          label="logo"
-          dark
-          className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-2xl"
-        />
+        <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-ink">
+          <i className="fa-solid fa-infinity text-2xl text-primary" />
+        </span>
 
         {/* Connected avatars */}
-        {AVATARS.map((point, i) => (
-          <Placeholder
-            key={i}
-            label="avatar"
-            showLabel={false}
+        {AVATARS.map((point) => (
+          <span
+            key={point.name}
+            className="absolute -translate-x-1/2 -translate-y-1/2"
             style={{ left: point.x, top: point.y }}
-            className="absolute h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-mist"
-          />
+          >
+            <Avatar name={point.name} className="h-12 w-12 text-xs" ring="ring-4 ring-mist" />
+          </span>
         ))}
       </div>
 
