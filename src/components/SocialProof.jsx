@@ -1,4 +1,5 @@
 import Avatar from './Avatar.jsx';
+import Reveal from './Reveal.jsx';
 
 // Anchor points on a 0–100% grid (center = 50,50) so the diagram scales
 // down on small screens without overflowing.
@@ -14,7 +15,7 @@ export default function SocialProof() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 lg:grid-cols-2">
       {/* Left — network diagram */}
-      <div className="relative mx-auto h-72 w-72 max-w-full sm:h-80 sm:w-80">
+      <Reveal className="relative mx-auto h-72 w-72 max-w-full sm:h-80 sm:w-80">
         <div className="absolute inset-0 rounded-full bg-gray-200/50" />
         <svg
           className="absolute inset-0 h-full w-full text-gray-300"
@@ -45,10 +46,10 @@ export default function SocialProof() {
             <Avatar name={point.name} className="h-10 w-10 text-[10px] sm:h-12 sm:w-12 sm:text-xs" ring="ring-4 ring-mist" />
           </span>
         ))}
-      </div>
+      </Reveal>
 
-      {/* Right — copy */}
-      <div>
+      {/* Right — copy (centered on mobile) */}
+      <Reveal delay={150} className="flex flex-col items-center text-center lg:items-start lg:text-left">
         <h2 className="max-w-md font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Connecting with each other for the same purpose
         </h2>
@@ -61,7 +62,7 @@ export default function SocialProof() {
         >
           Learn More
         </a>
-      </div>
+      </Reveal>
     </section>
   );
 }

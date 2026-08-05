@@ -1,3 +1,5 @@
+import Reveal from './Reveal.jsx';
+
 const FEATURES = [
   {
     icon: 'fa-bullseye',
@@ -14,8 +16,8 @@ const FEATURES = [
 export default function StatsFeatures() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-4 lg:grid-cols-2 lg:gap-20">
-      {/* Left — heading + stats */}
-      <div>
+      {/* Left — heading + stats (centered on mobile) */}
+      <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
         <h2 className="max-w-md font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Payment plans made easier together
         </h2>
@@ -29,22 +31,24 @@ export default function StatsFeatures() {
             <p className="mt-1 text-sm text-gray-500">Ratings</p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Right — feature list */}
-      <div className="divide-y divide-gray-200">
-        {FEATURES.map((feature) => (
-          <div key={feature.title} className="py-8 first:pt-0 last:pb-0">
-            <div className="flex items-center gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-primary">
-                <i className={`fa-solid ${feature.icon}`} />
-              </span>
-              <h3 className="font-semibold">{feature.title}</h3>
+      <Reveal delay={150} className="w-full">
+        <div className="divide-y divide-gray-200">
+          {FEATURES.map((feature) => (
+            <div key={feature.title} className="py-8 first:pt-0 last:pb-0">
+              <div className="flex items-center gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink text-primary">
+                  <i className={`fa-solid ${feature.icon}`} />
+                </span>
+                <h3 className="font-semibold">{feature.title}</h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-gray-500">{feature.body}</p>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-gray-500">{feature.body}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

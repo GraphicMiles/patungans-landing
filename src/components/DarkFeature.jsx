@@ -1,3 +1,4 @@
+import Reveal from './Reveal.jsx';
 import { DeviceCard } from './PhoneMockups.jsx';
 
 export default function DarkFeature() {
@@ -10,8 +11,8 @@ export default function DarkFeature() {
         </span>
 
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-12">
-          {/* Left — copy */}
-          <div>
+          {/* Left — copy (centered on mobile) */}
+          <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <h2 className="max-w-md font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Connecting your beliefs with discourse with friends
             </h2>
@@ -22,12 +23,12 @@ export default function DarkFeature() {
             >
               Learn More
             </a>
-          </div>
+          </Reveal>
 
           {/* Right — device mockup */}
-          <div className="px-6 sm:px-10">
+          <Reveal delay={150} className="px-6 sm:px-10">
             <DeviceCard />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

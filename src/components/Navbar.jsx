@@ -1,27 +1,21 @@
 import { useState } from 'react';
-import AuthModal from './AuthModal.jsx';
+import { Link } from 'react-router-dom';
 
 const LINKS = ['Service', 'Product', 'Blog', 'About Us'];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [auth, setAuth] = useState({ open: false, tab: 'login' });
-
-  const openAuth = (tab) => {
-    setAuth({ open: true, tab });
-    setMenuOpen(false);
-  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/70 bg-mist/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Brand */}
-        <a href="#" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink">
             <i className="fa-solid fa-infinity text-sm text-primary" />
           </span>
           <span className="font-display text-base font-bold tracking-tight">Patungans</span>
-        </a>
+        </Link>
 
         {/* Center links */}
         <nav className="hidden items-center gap-8 text-sm font-medium text-gray-500 md:flex">
@@ -34,20 +28,18 @@ export default function Navbar() {
 
         {/* Right actions */}
         <div className="hidden items-center gap-2 md:flex">
-          <button
-            type="button"
-            onClick={() => openAuth('login')}
+          <Link
+            to="/login"
             className="rounded-lg px-4 py-2 text-sm font-semibold text-gray-600 transition-colors hover:text-ink"
           >
             Log in
-          </button>
-          <button
-            type="button"
-            onClick={() => openAuth('signup')}
+          </Link>
+          <Link
+            to="/signup"
             className="rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-black"
           >
             Sign Up
-          </button>
+          </Link>
         </div>
 
         {/* Hamburger */}
@@ -77,30 +69,23 @@ export default function Navbar() {
             ))}
           </nav>
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              onClick={() => openAuth('login')}
-              className="rounded-lg border border-gray-300 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200/70"
+            <Link
+              to="/login"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-lg border border-gray-300 py-2.5 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200/70"
             >
               Log in
-            </button>
-            <button
-              type="button"
-              onClick={() => openAuth('signup')}
-              className="rounded-lg bg-ink py-2.5 text-sm font-semibold text-white transition-colors hover:bg-black"
+            </Link>
+            <Link
+              to="/signup"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-lg bg-ink py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-black"
             >
               Sign Up
-            </button>
+            </Link>
           </div>
         </div>
       )}
-
-      <AuthModal
-        open={auth.open}
-        tab={auth.tab}
-        onClose={() => setAuth((current) => ({ ...current, open: false }))}
-        onTabChange={(tab) => setAuth({ open: true, tab })}
-      />
     </header>
   );
 }

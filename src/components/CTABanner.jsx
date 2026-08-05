@@ -1,3 +1,5 @@
+import Reveal from './Reveal.jsx';
+
 // Floating icon bubbles (Font Awesome), scattered like the reference design
 const ICON_SLOTS = [
   { icon: 'fa-car', size: 64, x: '6%', y: '8%' },
@@ -17,9 +19,10 @@ export default function CTABanner() {
     // exactly like the reference design.
     <section className="relative z-10 -mb-24 px-6">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#8CEB9C] via-primary to-primaryDark p-10 sm:p-14">
+        <Reveal>
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          {/* Left — copy */}
-          <div>
+          {/* Left — copy (centered on mobile) */}
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <h2 className="max-w-sm font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Plan your budget now with your friends together
             </h2>
@@ -44,6 +47,7 @@ export default function CTABanner() {
             ))}
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );
