@@ -1,81 +1,62 @@
-# Patungans — Landing Page
+# Patungans
 
-Enterprise-grade marketing page for **Patungans**, the joint-venture / group-money
-app: friends pool contributions toward a shared target (a trip, a gift, a
-subscription, an event) and track the pool's progress together.
+The marketing page for Patungans, a group-savings app where friends pool money
+toward one shared target: a trip, a gift, a subscription, an event. The page
+explains the idea, shows the pool filling, and sends people to the app.
 
-Built with **React + Vite + Tailwind CSS + React Router**. No image assets —
-every future image slot uses the labeled `ImagePlaceholder` component, and the
-signature visual (the pool) is pure SVG/CSS.
+Live at [patungans.vercel.app](https://patungans.vercel.app).
 
-## Design system (tokens live only in `src/index.css`)
+## Why it exists
 
-| Token     | Hex       | Job                                        |
-| --------- | --------- | ------------------------------------------ |
-| ink       | `#101B16` | deep pine dark backgrounds                 |
-| paper     | `#F6F3EC` | warm bone light backgrounds                |
-| jade      | `#1F7A5C` | growth / money — primary actions           |
-| coral     | `#E8694A` | social warmth — friends & social proof     |
-| gold      | `#C9A15A` | milestones / target reached only           |
-| line      | `#DAD4C4` | hairlines on paper                         |
+Group money fails on bookkeeping, not on intent. Everyone agrees to the trip, one
+person collects, and the record of who paid what lives in a chat thread. Patungans
+makes the pool the object: a target, a running total, and everyone able to see it.
+The landing page has to sell that in one screen, so the pool is the signature
+visual and it is drawn, not photographed.
 
-- **Display**: Fraunces (headlines only) · **Body**: Inter · **Numerals**: JetBrains Mono (money, %, stats only)
-- Full type scale as `--font-size-*` / `--line-height-*` custom properties; no inline sizing.
-- Zero shadows, zero raw hex/px outside the token file, no emoji.
+## What you can do
 
-## Signature element
+- **Read the pitch** and how the pool works.
+- **See the pool fill** as the page's main visual, built in SVG and CSS.
+- **Follow the sections** in order, on desktop and phone.
+- **Place a future screenshot** anywhere a `ImagePlaceholder` component sits: the
+  page ships with no image assets by design, and each slot is labelled.
 
-`PoolViz` — contribution nodes (initials avatars) animate along SVG paths into a
-central vessel whose fill **scrubs with scroll progress** through its section.
-A miniature `NavVessel` in the sticky nav fills with page scroll progress next
-to a slim jade progress bar.
-
-## Motion
-
-- One shared `IntersectionObserver` (`src/hooks/observers.js`), applied via
-  `data-reveal` across all sections; reveals **reverse** when scrolling back up
-  past the trigger (elements that left through the top stay revealed).
-- Child stagger via `--reveal-delay` inline custom property.
-- Stats count up on entry and reset on reverse; instant under
-  `prefers-reduced-motion`, which also disables transforms and the traveling
-  contribution dots.
-- Testimonial carousel is user-controlled only (arrows / swipe, no autoplay).
-
-## Routes
-
-| Path      | Page                        |
-| --------- | --------------------------- |
-| `/`       | Landing page                |
-| `/login`  | Centered login box (UI-only)|
-| `/signup` | Centered signup box (UI-only)|
-
-## Structure
-
-```
-src/
-├── App.jsx               # router
-├── LandingPage.jsx       # section composition + reveal system
-├── index.css             # TOKEN FILE (only raw hex lives here) + reveal CSS
-├── hooks/observers.js    # one IO config, scroll/page progress, reduced motion
-├── pages/AuthPage.jsx    # /login & /signup centered box
-└── components/
-    ├── ui.jsx            # Button variants, Card, ImagePlaceholder, Avatar
-    ├── PoolViz.jsx       # signature visualization + NavVessel
-    ├── Navbar.jsx        # condensing sticky nav + progress bar + hamburger
-    ├── Hero.jsx          # paper — headline + scrubbed pool viz
-    ├── StatsStrip.jsx    # mono count-up stats band
-    ├── HowItWorks.jsx    # ink — 3 numbered steps + screenshot slot
-    ├── TrustPair.jsx     # paper — security / integrations cards
-    ├── Recap.jsx         # paper-deep — mini pool viz + "why pooling works"
-    ├── Testimonials.jsx  # ink — user-controlled carousel
-    ├── FinalCTA.jsx      # jade band — single typographic ask
-    ├── Footer.jsx        # ink — About/Company/Legal + socials
-    └── AuthBox.jsx       # login/signup box
-```
-
-## Run
+## Running it
 
 ```bash
 npm install
-npm run dev
+npm run dev      # vite
+npm run build    # production build
+npm run preview  # serve the build
+```
+
+## Design system
+
+Tokens live only in `src/index.css`, and nothing else hardcodes a colour:
+
+| Token | Hex | Job |
+|---|---|---|
+| ink | `#101B16` | deep pine dark backgrounds |
+| paper | `#F6F3EC` | warm bone light backgrounds |
+| jade | green | the pool, progress and affirmative action |
+
+React, Vite, Tailwind CSS and React Router. `SITE_SUMMARY.md` records the page
+structure and copy decisions.
+
+## What is not here
+
+- No app, no accounts and no payments. This is the marketing page for the product.
+- No photography or illustration. Every image slot is a labelled placeholder, so
+  the layout is honest about what is still missing.
+- No CMS. Copy changes are code changes.
+
+## How it is built
+
+```
+index.html          entry
+src/                components, sections, routes
+src/index.css       the only place design tokens are defined
+tailwind.config.js, postcss.config.js, vite.config.js
+SITE_SUMMARY.md     structure and copy decisions
 ```
